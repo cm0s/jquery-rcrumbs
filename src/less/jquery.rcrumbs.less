@@ -1,0 +1,46 @@
+@import "variables";
+
+body, html {
+  //Avoid displaying horizontal browser scrollbar when shrinking the browser window faster than the crumb
+  //hiding animation.
+  overflow-x: hidden;
+}
+
+.rcrumbs {
+  font-family: @font-family;
+  font-size: @font-size;
+  line-height: @line-height;
+
+  //Avoid words wrapping when animating crumbs
+  white-space: nowrap;
+
+  > ul {
+    //Remove padding defined by the user agent
+    padding: 0px;
+    //needed to remove bullets on IE7
+    list-style: none;
+
+    > li {
+      //Avoid small vertical shift on li when animation is executed on IE browser.
+      //This happen because jquery animation set overflow:hidden when animating an element.
+      overflow: hidden;
+      display: none;
+      &.show {
+        display: inline-block;
+      }
+    }
+  }
+
+  a {
+    color: @link-color;
+    text-decoration: none;
+    &:hover {
+      color: @link-hover-color;
+    }
+  }
+  .divider {
+    color: @divider-color;
+    padding: 0 5px;
+  }
+}
+

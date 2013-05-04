@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>rCrumbs demo</title>
+  <!--[if IE 7]>
+  <link rel="stylesheet" href="css/fontello/fontello-ie7.css">
+  <![endif]-->
+  <link rel="stylesheet" href="css/fontello/fontello.css">
+  <link rel="stylesheet" type="text/css" href="../dist/jquery.rcrumbs.css">
+  <link rel="stylesheet" type="text/css" href="css/demo.css">
+  <script src="../libs/jquery/1.9.1/jquery-1.9.1.js"></script>
+  <script src="../dist/jquery.rcrumbs.js"></script>
+</head>
+<body>
+
+<div class="header">
+  <h1>rCrumbs jQuery plugin ─ Demonstration</h1>
+
+  <div class="link-info"><span class="github-link"><a href="https://github.com/cm0s/jquery-rcrumbs"><i
+      class="github-icon icon-github-circled"></i>View
+    project on GitHub</a></span><span class="tip">Try to resize your browser window</span></div>
+</div>
+
+<div class="content">
+  <div class="description">
+    <h1>Automatic resize (with animation)</h1><span class="description-toggler"><i
+      class="icon-info-circle"></i><i class="direction icon-down-open"></i></span>
+
+    <div class='details'>
+      <p>The following breadcrumbs is loaded inside a div with a width of 100%. Thus, when the browser window is
+        resized the div is also resized and the breadcrumbs is rerendered when the available space can display
+        more or less items.</p>
+      <pre>$("...").rcrumbs()</pre>
+    </div>
+  </div>
+  <div class="rcrumbs" id="breadcrumbs">
+    <ul>
+      <li><a href="javascript:">Home</a><span class="divider">></span></li>
+      <li><a href="javascript:">jQuery plugins</a><span class="divider">></span></li>
+      <li><a href="javascript:">Navigation</a><span class="divider">></span></li>
+      <li><a href="javascript:">Breadcrumbs</a><span class="divider">></span></li>
+      <li><a href="javascript:">rCrumbs</a><span class="divider">></span></li>
+      <li><a href="javascript:">Demo</a><span class="divider">></span></li>
+      <li><a href="javascript:">This is a demonstration to show how the rCrumbs jQuery plugin works</a></li>
+    </ul>
+  </div>
+
+  <div class="description">
+    <h1>Automatic resize (without animation) </h1><span class="description-toggler"><i
+      class="icon-info-circle"></i><i class="direction icon-down-open"></i></span>
+
+    <div class='details'>
+      <p>Same as above but with the animation option deactivated.</p>
+      <pre>$("...").rcrumbs({animation: {activated: false}})</pre>
+    </div>
+  </div>
+  <div class="rcrumbs" id="breadcrumbs-without-anim">
+    <ul>
+      <li><a href="javascript:">Home</a><span class="divider">></span></li>
+      <li><a href="javascript:">jQuery plugins</a><span class="divider">></span></li>
+      <li><a href="javascript:">Navigation</a><span class="divider">></span></li>
+      <li><a href="javascript:">Breadcrumbs</a><span class="divider">></span></li>
+      <li><a href="javascript:">rCrumbs</a><span class="divider">></span></li>
+      <li><a href="javascript:">Demo</a><span class="divider">></span></li>
+      <li><a href="javascript:">This is a demonstration to show how the rCrumbs jQuery plugin works</a></li>
+    </ul>
+  </div>
+
+  <div class="description">
+    <h1>Fixed breadcrumbs width</h1><span class="description-toggler"><i
+      class="icon-info-circle"></i><i class="direction icon-down-open"></i></span>
+
+    <div class='details'>
+      <p>This breadcrumbs is loaded inside a div with a width of 565px. The display of the navigation items
+        is done only once (on page load).<br/>
+        The windowResize option is deactivated in order to avoid triggering the window resize event which is only needed
+        when a rCrumbs is displayed inside a div with a percentage width.</p>
+      <pre>$("...").rcrumbs({windowResize: false})</pre>
+    </div>
+    <div class="rcrumbs" id="breadcrumbs-fixed-width">
+      <ul>
+        <li><a href="javascript:">Home</a><span class="divider">></span></li>
+        <li><a href="javascript:">jQuery plugins</a><span class="divider">></span></li>
+        <li><a href="javascript:">Navigation</a><span class="divider">></span></li>
+        <li><a href="javascript:">Breadcrumbs</a><span class="divider">></span></li>
+        <li><a href="javascript:">rCrumbs</a><span class="divider">></span></li>
+        <li><a href="javascript:">Demo</a><span class="divider">></span></li>
+        <li><a href="javascript:">This is a demonstration to show how the rCrumbs jQuery plugin works</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <script>
+    $("#breadcrumbs").rcrumbs();
+    $("#breadcrumbs-fixed-width").rcrumbs({windowResize: false});
+    $("#breadcrumbs-without-anim").rcrumbs({animation: {activated: false}});
+
+    $('.description-toggler').on('click', function () {
+      $(this).next('.details').first().toggle();
+      var directionIcon = $(this).children('.direction');
+      if (directionIcon.hasClass('icon-down-open')) {
+        directionIcon.removeClass('icon-down-open');
+        directionIcon.addClass('icon-up-open');
+      } else {
+        directionIcon.removeClass('icon-up-open');
+        directionIcon.addClass('icon-down-open');
+      }
+    });
+  </script>
+</body>
+</html>

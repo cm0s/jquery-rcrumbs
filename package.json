@@ -1,0 +1,51 @@
+{
+  "name": "jquery-rcrumbs",
+  "title": "jQuery responsive breadcrumbs plugin",
+  "version": "0.1.0",
+  "description": "jQuery plugin to create a responsive breadcrumbs",
+  "main": "src/rcrumbs.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cm0s/rCrumbs.git"
+  },
+  "scripts": {
+    "test": "grunt jshint qunit"
+  },
+  "keywords": [
+    "breadcrumb",
+    "breadcrumbs",
+    "resizable",
+    "responsive",
+    "navigation",
+    "links",
+    "trail"
+  ],
+  "homepage": "https://github.com/cm0s/rCrumbs",
+  "bugs": {
+    "url": "https://github.com/cm0s/rCrumbs/issues"
+  },
+  "author": {
+    "name": "Nicolas Forney",
+    "email": "nicolas@eforney.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/cm0s/rCrumbs/blob/master/LICENCE-MIT"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-qunit": "~0.2.1",
+    "grunt-contrib-concat": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-less": "~0.5.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-replace": "~0.4.3",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-csslint": "~0.1.2"
+  }
+}
