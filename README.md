@@ -146,14 +146,12 @@ This project use [Grunt JS](http://gruntjs.com/) to automate the creation of the
 To use the Grunt tasks declared inside Gruntfile.js you can follow the
 [getting start guide](http://gruntjs.com/getting-started).
 
-Once Grunt installed run the grunt command inside the project root folder to execute the default tasks which run in the
-correct order all the tasks declared inside the Gruntfile.js.
+Once Nodejs and Grunt are installed run the following command in order to download the dependencies :
+```
+    npm install
+```
 
-You can also execute the following command:
-    grunt watch
-
-This task will keep track of the source and test files and will inform you if there id any js syntax here or if the
-code pass all the test declared inside the test/test.js file.
+Then, your can start to use the different Grunt tasks declared inside Gruntfile.js.
 
 ### Unit testing
 
