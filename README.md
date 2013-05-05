@@ -1,4 +1,4 @@
-# rCrumbs ─ a respsonsive breadcrumbs
+# rCrumbs ─ a respsonsive breadcrumbs [![Build Status](https://travis-ci.org/cm0s/jquery-rcrumbs.png)](https://travis-ci.org/cm0s/jquery-rcrumbs)
 
 rCrumbs aka responsiveCrumbs aka resizableCrumbs is a jQuery plugin which transforms a bunch of list item elements into
 a responsive breadcrumbs. The number of navigation items displayed is dynamically adapted depending on the available
