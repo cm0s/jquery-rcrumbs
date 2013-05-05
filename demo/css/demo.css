@@ -1,0 +1,119 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+  color: #444444;
+}
+
+.header {
+  background-color: #f2f2f2;
+  background-image: -moz-linear-gradient(#f8f8f8, #f2f2f2);
+  background-image: -webkit-linear-gradient(#f8f8f8, #f2f2f2);
+  background-image: -o-linear-gradient(#f8f8f8, #f2f2f2);
+  background-image: -webkit-gradient(#f8f8f8, #f2f2f2);
+  background-image: linear-gradient(#f8f8f8, #f2f2f2);
+  background-repeat: repeat-x;
+  text-shadow: 1px 1px 0 #fff;
+  border-bottom: 1px solid #dedede;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px 20px 20px 40px;
+  margin-bottom: 35px;
+}
+
+.header h1 {
+  font-size: 22px;
+  color: #565c6e;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  padding: 0;
+  line-height: 26px;
+  width: 650px;
+}
+
+.tip {
+  margin-left: 15px;
+  width: 355px;
+}
+
+.link-info {
+  width: 552px;
+}
+
+.description h1 {
+  font-size: 16px;
+  color: #565c6e;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.description .details {
+  display: none;
+  font-size: 14px;
+  margin: 6px 0 0 0;
+  padding: 0 12px;
+  border-left: 1px solid #ccc;
+}
+
+.description-toggler {
+  margin-left: 8px;
+  cursor: pointer;
+  color: steelblue;
+}
+
+.description-toggler:hover {
+  color: #565c6e;
+}
+
+.direction:before {
+  margin-left: 0;
+}
+
+.direction {
+  font-size: 11px;
+}
+
+.content {
+  margin: 0 15px;
+}
+
+.header a {
+  color: steelblue;
+  text-decoration: none;
+}
+
+.header a:hover {
+  color: #565c6e;
+}
+
+.github-icon {
+  font-size: 20px;
+}
+
+.rcrumbs {
+  margin-left: 15px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+#breadcrumbs-fixed-width-small {
+  width: 200px;
+}
+
+#breadcrumbs-fixed-width {
+  width: 565px;
+}
+
+pre {
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+  color: firebrick;
+}
