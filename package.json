@@ -9,7 +9,7 @@
     "url": "https://github.com/cm0s/rCrumbs.git"
   },
   "scripts": {
-    "test": "grunt jshint qunit"
+    "test": "grunt test-all"
   },
   "keywords": [
     "breadcrumb",
