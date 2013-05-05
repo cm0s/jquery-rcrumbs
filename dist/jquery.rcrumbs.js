@@ -1,10 +1,10 @@
 /* jQuery responsive breadcrumbs plugin jQuery plugin
- * https://github.com/cm0s/rCrumbs
+ * https://github.com/cm0s/jquery-rcrumbs
  *
  * Copyright (c) 2013, Nicolas Forney 
  * Released under the MIT licence 
  *
- * version: 0.1.0 
+ * version: 1.0.0 
  * 2013/05/05
  */
 (function ($, window, document, undefined) {
@@ -12,7 +12,7 @@
 
   var rcrumbs = 'rcrumbs',
     defaults = {
-      version: '0.1.0',
+      version: '1.0.0',
       callback: {
         preCrumbsListDisplay: $.noop, //A function which is executed before the crumbs list is rendered
         preCrumbDisplay: $.noop, //A function which is executed before each crumb is rendered
