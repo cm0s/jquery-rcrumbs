@@ -5,7 +5,7 @@ a responsive breadcrumbs. The number of navigation items displayed is dynamicall
 space in the browser window.
 
 ## Demo
-A demonstration is available [here](https://cm0s.github.io/rCrumbs/demo)
+A demonstration is available [here](http://cm0s.github.io/jquery-rcrumbs/demo/)
 
 ## Usage
 1. Include the plugin css file:
