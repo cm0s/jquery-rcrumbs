@@ -1,7 +1,7 @@
 {
   "name": "jquery-rcrumbs",
   "title": "jQuery responsive breadcrumbs plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "jQuery plugin to create a responsive breadcrumbs",
   "repository": {
     "type": "git",

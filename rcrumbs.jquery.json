@@ -15,7 +15,7 @@
     "collapse",
     "collapsing"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Nicolas Forney",
     "email": "nicolas@eforney.com"
@@ -26,7 +26,7 @@
       "url": "https://github.com/cm0s/jquery-rcrumbs/blob/master/LICENSE-MIT"
     }
   ],
-  "bugs":  "https://github.com/cm0s/jquery-rcrumbs/issues",
+  "bugs": "https://github.com/cm0s/jquery-rcrumbs/issues",
   "homepage": "https://github.com/cm0s/jquery-rcrumbs",
   "docs": "https://github.com/cm0s/jquery-rcrumbs",
   "dependencies": {
