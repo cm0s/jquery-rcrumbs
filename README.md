@@ -11,8 +11,6 @@ A demonstration is available [here](http://cm0s.github.io/jquery-rcrumbs/demo/)
 The plugin's javascript and css files can be found in the dist/ folder.
 A development and a production version (minified) are available.
 
-Current stable release : [1.0.0](http://github.com/cm0s/jquery-rcrumbs/zipball/1.0.0)
-
 ## Usage
 1. Include the plugin css file:
 ```html
