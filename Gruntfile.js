@@ -150,6 +150,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-replace');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-bumpx');
 
   grunt.registerTask('default', ['connect', 'clean', 'jshint', 'less', 'qunit:last', 'concat', 'replace', 'uglify']);
   grunt.registerTask('test', ['connect', 'jshint', 'qunit:last']);
