@@ -23,12 +23,12 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/cm0s/rCrumbs/blob/master/LICENCE-MIT"
+      "url": "https://github.com/cm0s/jquery-rcrumbs/blob/master/LICENSE-MIT"
     }
   ],
-  "bugs":  "https://github.com/cm0s/rCrumbs/issues",
-  "homepage": "https://github.com/cm0s/rCrumbs",
-  "docs": "https://github.com/cm0s/rCrumbs",
+  "bugs":  "https://github.com/cm0s/jquery-rcrumbs/issues",
+  "homepage": "https://github.com/cm0s/jquery-rcrumbs",
+  "docs": "https://github.com/cm0s/jquery-rcrumbs",
   "dependencies": {
     "jquery": ">=1.7.0"
   }

@@ -132,6 +132,12 @@ module.exports = function (grunt) {
         files: 'src/**/*.less',
         tasks: ['less:dev']
       }
+    },
+    bump: {
+      options: {
+        tabSize: 2
+      },
+      files: ['package.json', 'rcrumbs.jquery.json']
     }
   });
 

@@ -1,12 +1,11 @@
 {
   "name": "jquery-rcrumbs",
   "title": "jQuery responsive breadcrumbs plugin",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "jQuery plugin to create a responsive breadcrumbs",
-  "main": "src/rcrumbs.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cm0s/rCrumbs.git"
+    "url": "https://github.com/cm0s/jquery-rcrumbs.git"
   },
   "scripts": {
     "test": "grunt test-all"
@@ -24,9 +23,9 @@
     "collapse",
     "collapsing"
   ],
-  "homepage": "https://github.com/cm0s/rCrumbs",
+  "homepage": "https://github.com/jquery-rcrumbs/rCrumbs",
   "bugs": {
-    "url": "https://github.com/cm0s/rCrumbs/issues"
+    "url": "https://github.com/cm0s/jquery-rcrumbs/issues"
   },
   "author": {
     "name": "Nicolas Forney",
@@ -35,7 +34,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/cm0s/rCrumbs/blob/master/LICENCE-MIT"
+      "url": "https://github.com/cm0s/jquery-rcrumbs/blob/master/LICENSE-MIT"
     }
   ],
   "devDependencies": {
