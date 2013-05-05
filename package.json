@@ -18,7 +18,11 @@
     "responsive",
     "navigation",
     "links",
-    "trail"
+    "trail",
+    "menu",
+    "windows",
+    "collapse",
+    "collapsing"
   ],
   "homepage": "https://github.com/cm0s/rCrumbs",
   "bugs": {

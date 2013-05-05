@@ -10,7 +10,10 @@
     "navigation",
     "links",
     "trail",
-    "menu"
+    "menu",
+    "windows",
+    "collapse",
+    "collapsing"
   ],
   "version": "1.0.0",
   "author": {
