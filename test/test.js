@@ -17,11 +17,11 @@
 
   test('should not be instantiable more than once on an element', function () {
     throws(
-      function () {
-        this.$element.rcrumbs();
-        this.$element.rcrumbs();
-      },
-      "Should raise an error"
+        function () {
+          this.$element.rcrumbs();
+          this.$element.rcrumbs();
+        },
+        "Should raise an error"
     );
   });
 
@@ -33,19 +33,19 @@
 
   test('should not be callable when plugin not instantiated', function () {
     throws(
-      function () {
-        this.$element.rcrumbs('version');
-      },
-      "Should raise an error"
+        function () {
+          this.$element.rcrumbs('version');
+        },
+        "Should raise an error"
     );
   });
 
   test('should not be possible to call private method', function () {
     throws(
-      function () {
-        this.$element.rcrumbs('_init');
-      },
-      "Should raise an error"
+        function () {
+          this.$element.rcrumbs('_init');
+        },
+        "Should raise an error"
     );
   });
 
@@ -127,8 +127,44 @@
     this.$element.width(70);
     this.$element.rcrumbs();
     var lastCrumb = $('li', this.$element).last();
-    var crumbTextOverflowValue = lastCrumb.css('text-overflow');
-    equal(crumbTextOverflowValue, 'ellipsis', 'Last li element should have the following inline style: text-overflow:ellipsis');
+    equal(true, lastCrumb.hasClass('ellipsis'), 'Last li element should have the class [ellipsis]');
   });
+
+  test('minNbCrumb:3 => the number of crumbs displayed is equal to two even when available space is smaller than' +
+      ' the width of the two crumbs', function () {
+    var $element = $("#full-list-width-100px");
+
+    $element.rcrumbs({
+      nbUncollapsableCrumbs: 3
+    });
+    var nbCrumbs = nbCrumbDisplayed();
+    equal(nbCrumbs,3, '[' + nbCrumbs + '] crumbs dispayed, there should be 3');
+  });
+
+  test('minNbCrumb:3 => ellipsis is set on the last crumb only', function () {
+    var $element = $("#full-list-width-100px");
+
+    $element.rcrumbs({
+      nbUncollapsableCrumbs: 3
+    });
+
+    var $lastElement = $('li', $element).last(),
+        $secondElement = $lastElement.prev(),
+        $firstElement = $secondElement.prev();
+
+    equal($firstElement.hasClass('ellipsis'), false, 'first crumb should not have ellipsis');
+    equal($secondElement.hasClass('ellipsis'), false, 'second crumb should not have ellipsis');
+    equal($lastElement.hasClass('ellipsis'), true, 'last crumb should have ellipsis');
+  });
+
+  function nbCrumbDisplayed() {
+    var nbCrumb = 0;
+    $.each($('li', this.$element), function (index, value) {
+      if ($(this).hasClass('show')) {
+        nbCrumb += 1;
+      }
+    });
+    return nbCrumb;
+  }
 
 }(jQuery));

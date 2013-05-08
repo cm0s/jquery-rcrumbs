@@ -10,21 +10,22 @@
   "use strict";
 
   var rcrumbs = 'rcrumbs',
-    defaults = {
-      version: '@@version',
-      callback: {
-        preCrumbsListDisplay: $.noop, //A function which is executed before the crumbs list is rendered
-        preCrumbDisplay: $.noop, //A function which is executed before each crumb is rendered
-        postCrumbsListDisplay: $.noop, //A function which is executed after the crumbs list is rendered
-        postCrumbDisplay: $.noop //A function which is executed after each crumb is rendered
-      },
-      ellipsis: true, // Display ellipsis when only the last crumb remains with not enough space to be fully displayed
-      windowResize: true,
-      animation: {
-        activated: true, // Activate an animation when crumbs are displayed/hidden on a window resize
-        speed: 400 // Animation speed (activated option must be set to true)
-      }
-    };
+      defaults = {
+        version: '@@version',
+        callback: {
+          preCrumbsListDisplay: $.noop, //A function which is executed before the crumbs list is rendered
+          preCrumbDisplay: $.noop, //A function which is executed before each crumb is rendered
+          postCrumbsListDisplay: $.noop, //A function which is executed after the crumbs list is rendered
+          postCrumbDisplay: $.noop //A function which is executed after each crumb is rendered
+        },
+        ellipsis: true, // Display ellipsis when only the last crumb remains with not enough space to be fully displayed
+        windowResize: true, // To activate/deactivate the resizing of the crumbs on window resize event
+        nbUncollapsableCrumbs: 2, // Number of crumbs which can not be collapsed.
+        animation: {
+          activated: true, // Activate an animation when crumbs are displayed/hidden on a window resize
+          speed: 400 // Animation speed (activated option must be set to true)
+        }
+      };
 
   // Plugin constructor
   function Plugin(element, options) {
@@ -56,12 +57,15 @@
       this.nbCrumbDisplayed = 0;
       this.$crumbsList = $('ul', this.element);
       this.$crumbs = $('li', this.$crumbsList);
+      this.$lastCrumb = this.$crumbs.last();
       this.reversedCrumbs = $('li', this.$crumbsList).get().reverse();
       this.lastNbCrumbDisplayed = 0;
       this.totalCrumbsWidth = 0;
 
       this._initCrumbs();
-      this._showOrHideCrumbsList(false);
+
+      this._showOrHideCrumbsList(true);
+
       if (this.options.windowResize) {
         this._showOrHideCrumbsListOnWindowResize();
       }
@@ -73,7 +77,7 @@
      */
     _getHiddenElWidth: function (element) {
       var result,
-        elementClone = $(element).clone(false);
+          elementClone = $(element).clone(false);
 
       elementClone.css({
         visibility: 'hidden',
@@ -117,11 +121,9 @@
     },
 
     /**
-     * Run the showOrHideCrumb function for each li element contained into the ul element.
-     * For the first li element ellipsis is used to display the crumb when there is not enough space in the rcrumbs
-     * div container.
+     * @param disableAnimation used to disable the animation even if the animation.activated option is set to true.
      */
-    _showOrHideCrumbsList: function (isAnimationActivated) {
+    _showOrHideCrumbsList: function (disableAnimation) {
       var that = this;
       this.remainingSpaceToDisplayCrumbs = this.$element.width();
       this.nbCrumbDisplayed = 0;
@@ -133,9 +135,9 @@
       //It's important to loop through a reversed list in order to ensure we first try to display the last element
       $.each(this.reversedCrumbs, function (key, value) {
         var $crumb = $(this),
-          $nextCrumb = $(that.reversedCrumbs[key + 1]); //May return empty jQuery object
+            $nextCrumb = $(that.reversedCrumbs[key + 1]); //May return empty jQuery object
 
-        that._showOrHideCrumb($crumb, $nextCrumb, key, isAnimationActivated);
+        that._showOrHideCrumb($crumb, $nextCrumb, key, disableAnimation);
       });
 
       this.lastNbCrumbDisplayed = this.nbCrumbDisplayed;
@@ -144,55 +146,41 @@
 
     },
 
-    /**
-     * Display a crumb (li element) if there is enough remaining space in the rcrumb div container otherwise hide it
-     * It's also possible to display a crumb even if there is not enough space, by activating ellipsis plugin
-     * option.
-     */
-    _showOrHideCrumb: function ($crumb, $nextCrumb, crumbPosition, isAnimationActivated) {
+    _showOrHideCrumb: function ($crumb, $nextCrumb, crumbPosition, disableAnimation) {
       this.options.callback.preCrumbDisplay($crumb);
-
       var that = this;
       this.remainingSpaceToDisplayCrumbs -= $crumb.data('width');
 
-      if (this.remainingSpaceToDisplayCrumbs >= 0) {
-        //Stop using ellipsis when there is enough space to display the crumb
-        if (this.options.ellipsis && crumbPosition === 0) {
-          disableEllipsis();
-        }
+      if (crumbPosition < this.options.nbUncollapsableCrumbs) {
+        showCrumbWithOrWithoutAnimation();
 
-        if (this.lastNbCrumbDisplayed < (this.nbCrumbDisplayed + 1) && isAnimationActivated) {
-          showCrumb(true);
-        } else {
-          showCrumb();
+        if (this.remainingSpaceToDisplayCrumbs < 0) {
+          enableEllipsis(this.$lastCrumb);
         }
 
         this.totalCrumbsWidth += $crumb.data('width');
       } else {
-        if (this.options.ellipsis && crumbPosition === 0) {
-          showCrumb();
-          enableEllipsis();
+        if (this.remainingSpaceToDisplayCrumbs >= 0) {
+          showCrumbWithOrWithoutAnimation();
+          this.totalCrumbsWidth += $crumb.data('width');
         } else {
-          if (crumbPosition > 0) { //Never hide the first crumb
-            if (this.lastNbCrumbDisplayed > this.nbCrumbDisplayed - 1 && this.options.animation.activated) {
-              hideCrumbWithAnimation();
-            } else {
-              $crumb.removeClass('show');
-            }
+          if (this.lastNbCrumbDisplayed > this.nbCrumbDisplayed - 1 && this.options.animation.activated) {
+            hideCrumbWithAnimation();
+          } else {
+            $crumb.removeClass('show');
+          }
 
-            if (!this.nextCrumbToShowWidth) {
-              this.nextCrumbToShowWidth = $crumb.data('width');
-            }
+          if (!this.nextCrumbToShowWidth) {
+            this.nextCrumbToShowWidth = $crumb.data('width');
           }
         }
       }
 
-      function showCrumb(animate) {
+      function showCrumbWithOrWithoutAnimation() {
         $crumb.addClass('show');
 
-        that.nbCrumbDisplayed += 1;
-
-        if (animate) {
+        if (that.lastNbCrumbDisplayed < (that.nbCrumbDisplayed + 1) && that.options.animation.activated &&
+            !disableAnimation) {
           $crumb.width(0);
           $crumb.animate({width: $crumb.data('width')}, that.options.animation.speed, function () {
             that.options.callback.postCrumbDisplay($crumb);
@@ -200,6 +188,7 @@
         } else {
           that.options.callback.postCrumbDisplay($crumb);
         }
+        that.nbCrumbDisplayed += 1;
       }
 
       function hideCrumbWithAnimation() {
@@ -208,20 +197,18 @@
         });
       }
 
-      function enableEllipsis() {
+      function enableEllipsis($crumb) {
         $crumb.css({
-          'text-overflow': 'ellipsis',
-          'width': (that.remainingSpaceToDisplayCrumbs + $crumb.data('width')) + 'px',
-          'overflow': 'hidden'
+          'width': (that.remainingSpaceToDisplayCrumbs + $crumb.data('width')) + 'px'
         });
+        $crumb.addClass('ellipsis');
       }
 
-      function disableEllipsis() {
+      function disableEllipsis($crumb) {
         $crumb.css({
-          'text-overflow': 'normal',
-          'width': 'auto',
-          'overflow': 'auto'
+          'width': 'auto'
         });
+        $crumb.removeClass('ellipsis');
       }
     },
 
@@ -234,11 +221,24 @@
             var $currentCrumb = $(this);
             $currentCrumb.stop(true, true);
           });
-          that._showOrHideCrumbsList(that.options.animation.activated);
+
+          that._showOrHideCrumbsList();
+        }
+        //Disable ellipsis on the last crumb when there is enough space
+        if (rcrumbWidth >= that.totalCrumbsWidth && that.$lastCrumb.hasClass('ellipsis')) {
+          that._disableEllipsis(that.$lastCrumb);
         }
       });
+    },
+
+    _disableEllipsis: function ($crumb) {
+      $crumb.css({
+        'width': 'auto'
+      });
+      $crumb.removeClass('ellipsis');
     }
   };
+
 
   $.fn[rcrumbs] = function (methodNameOrObject) {
     // When the function parameter is a string the value is used to call the corresponding plugin method. If the

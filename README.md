@@ -86,6 +86,15 @@ Usage example :
     $("#breadcrumbs").rcrumbs({windowResize: true});
 ```
 
+### Number of uncollapsable navigation elements
+The number of navigation elements which cannot be collapsed when the breadcrumbs is resized.
+
+Default option value: 2
+
+Usage example :
+```html
+    $("#breadcrumbs").rcrumbs({nbUncollapsableCrumbs: 3});
+
 ### Animation (windowResize option must be set to tue)
 An animation can be activated when the crumbs are displayed/hidden on a window resize. It's also possible to set the
 animation speed (in ms).

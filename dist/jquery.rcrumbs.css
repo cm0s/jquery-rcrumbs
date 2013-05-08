@@ -19,6 +19,11 @@ html {
 .rcrumbs > ul > li.show {
   display: inline-block;
 }
+.rcrumbs > ul > li.ellipsis {
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden;
+}
 .rcrumbs a {
   color: #4682b4;
   text-decoration: none;
