@@ -75,6 +75,7 @@ Usage example :
 ```html
     $("#breadcrumbs").rcrumbs({ellipsis: false});
 ```
+
 ### Resize on browser window resize event
 Activate an automatic bind to the window resize event in order to resize the breadcrumbs when the browser window is
 resized.
@@ -94,6 +95,7 @@ Default option value: 2
 Usage example :
 ```html
     $("#breadcrumbs").rcrumbs({nbUncollapsableCrumbs: 3});
+```
 
 ### Animation (windowResize option must be set to tue)
 An animation can be activated when the crumbs are displayed/hidden on a window resize. It's also possible to set the
