@@ -4,15 +4,15 @@
  * Copyright (c) 2013, Nicolas Forney 
  * Released under the MIT licence 
  *
- * version: 1.0.1 
- * 2013/05/09
+ * version: 1.0.2 
+ * 2013/05/12
  */
 (function ($, window, document, undefined) {
   "use strict";
 
   var rcrumbs = 'rcrumbs',
       defaults = {
-        version: '1.0.1',
+        version: '1.0.2',
         callback: {
           preCrumbsListDisplay: $.noop, //A function which is executed before the crumbs list is rendered
           preCrumbDisplay: $.noop, //A function which is executed before each crumb is rendered
