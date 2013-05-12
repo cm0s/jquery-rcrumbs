@@ -13,7 +13,10 @@
     "menu",
     "windows",
     "collapse",
-    "collapsing"
+    "collapsing",
+    "jquery",
+    "animation",
+    "ui"
   ],
   "version": "1.0.1",
   "author": {

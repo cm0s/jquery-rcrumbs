@@ -21,7 +21,10 @@
     "menu",
     "windows",
     "collapse",
-    "collapsing"
+    "collapsing",
+    "jquery",
+    "animation",
+    "ui"
   ],
   "homepage": "https://github.com/cm0s/jquery-rcrumbs",
   "bugs": {
