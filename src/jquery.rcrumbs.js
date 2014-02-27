@@ -21,6 +21,7 @@
       ellipsis: true, // Display ellipsis when only the last crumb remains with not enough space to be fully displayed
       windowResize: true, // To activate/deactivate the resizing of the crumbs on window resize event
       nbUncollapsableCrumbs: 2, // Number of crumbs which can not be collapsed.
+      nbFixedCrumbs: 0, // Number of crumbs which are always displayed on the left side of the breadcrumbs
       animation: {
         activated: true, // Activate an animation when crumbs are displayed/hidden on a window resize
         speed: 400 // Animation speed (activated option must be set to true)
@@ -61,8 +62,19 @@
       this.reversedCrumbs = $('li', this.$crumbsList).get().reverse();
       this.lastNbCrumbDisplayed = 0;
       this.totalCrumbsWidth = 0;
-
+      this.fixedCrumbsWidth = 0;
       this._initCrumbs();
+
+      if (this.options.nbFixedCrumbs > 0) {
+        var nbCrumbs = this.$crumbs.length;
+        this.$crumbs = $('li', this.$crumbsList).slice(this.options.nbFixedCrumbs, nbCrumbs);
+        this.reversedCrumbs = $('li', this.$crumbsList).slice(this.options.nbFixedCrumbs, nbCrumbs).get().reverse();
+        var that = this;
+        $('li', this.$crumbsList).slice(0, this.options.nbFixedCrumbs).each(function (index, crumb) {
+          that.totalCrumbsWidth += $(crumb).data('width');
+          $(crumb).addClass('show');
+        });
+      }
 
       this._showOrHideCrumbsList(true);
 
@@ -107,6 +119,12 @@
         var $crumb = $(this);
         that._storeCrumbWidth($crumb);
       });
+
+      if (this.options.nbFixedCrumbs > 0) {
+        $(this.$crumbs).slice(0, this.options.nbFixedCrumbs).each(function (index, crumb) {
+          that.fixedCrumbsWidth += $(crumb).data('width');
+        });
+      }
     },
 
     /**
@@ -128,6 +146,13 @@
       this.remainingSpaceToDisplayCrumbs = this.$element.width();
       this.nbCrumbDisplayed = 0;
       this.totalCrumbsWidth = 0;
+
+      if (this.options.nbFixedCrumbs > 0) {
+        this.remainingSpaceToDisplayCrumbs -= this.fixedCrumbsWidth;
+        $('li', this.$crumbsList).slice(0, this.options.nbFixedCrumbs).each(function (index, crumb) {
+          that.totalCrumbsWidth += $(crumb).data('width');
+        });
+      }
       this.nextCrumbToShowWidth = undefined;
 
       this.options.callback.preCrumbsListDisplay(this);

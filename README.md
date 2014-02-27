@@ -97,6 +97,16 @@ Usage example :
     $("#breadcrumbs").rcrumbs({nbUncollapsableCrumbs: 3});
 ```
 
+### Number of fixed navigation elements
+The number of navigation elements which are always displayed on the left side of the breadcrumbs.
+
+Default option value: 0
+
+Usage example :
+```html
+    $("#breadcrumbs").rcrumbs({nbFixedCrumbs: 2});
+```
+
 ### Animation (windowResize option must be set to tue)
 An animation can be activated when the crumbs are displayed/hidden on a window resize. It's also possible to set the
 animation speed (in ms).
