@@ -130,7 +130,7 @@
     equal(true, lastCrumb.hasClass('ellipsis'), 'Last li element should have the class [ellipsis]');
   });
 
-  test('minNbCrumb:3 => the number of crumbs displayed is equal to two even when available space is smaller than' +
+  test('nbUncollapsableCrumbs:3 => the number of crumbs displayed is equal to two even when available space is smaller than' +
     ' the width of the two crumbs', function () {
     var $element = $('#full-list-width-100px');
 
@@ -141,7 +141,7 @@
     equal(nbCrumbs, 3, '[' + nbCrumbs + '] crumbs dispayed, there should be 3');
   });
 
-  test('minNbCrumb:3 => ellipsis is set on the last crumb only', function () {
+  test('nbUncollapsableCrumbs:3 => ellipsis is set on the last crumb only', function () {
     var $element = $('#full-list-width-100px');
 
     $element.rcrumbs({
