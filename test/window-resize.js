@@ -19,7 +19,7 @@
           window.open(location.href, 'win', 'width=800,height=600,scrollbars=1,resizable=1');
         });
     }
-    ok(testOpenedInAPopup, "The test page must be opened in a popup window");
+    ok(testOpenedInAPopup, 'The test page must be opened in a popup window');
   });
 
   module('window-resize', {

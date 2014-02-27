@@ -8,11 +8,11 @@
   });
 
   test('is defined on jQuery object', function () {
-    ok($.fn.rcrumbs, "Should be accessible");
+    ok($.fn.rcrumbs, 'Should be accessible');
   });
 
   test('should be chainable', function () {
-    strictEqual(this.$element.rcrumbs(), this.$element, "Should return a jQuery object");
+    strictEqual(this.$element.rcrumbs(), this.$element, 'Should return a jQuery object');
   });
 
   test('should not be instantiable more than once on an element', function () {
@@ -21,7 +21,7 @@
           this.$element.rcrumbs();
           this.$element.rcrumbs();
         },
-        "Should raise an error"
+        'Should raise an error'
     );
   });
 
@@ -36,7 +36,7 @@
         function () {
           this.$element.rcrumbs('version');
         },
-        "Should raise an error"
+        'Should raise an error'
     );
   });
 
@@ -45,7 +45,7 @@
         function () {
           this.$element.rcrumbs('_init');
         },
-        "Should raise an error"
+        'Should raise an error'
     );
   });
 
@@ -132,7 +132,7 @@
 
   test('minNbCrumb:3 => the number of crumbs displayed is equal to two even when available space is smaller than' +
       ' the width of the two crumbs', function () {
-    var $element = $("#full-list-width-100px");
+    var $element = $('#full-list-width-100px');
 
     $element.rcrumbs({
       nbUncollapsableCrumbs: 3
@@ -142,7 +142,7 @@
   });
 
   test('minNbCrumb:3 => ellipsis is set on the last crumb only', function () {
-    var $element = $("#full-list-width-100px");
+    var $element = $('#full-list-width-100px');
 
     $element.rcrumbs({
       nbUncollapsableCrumbs: 3

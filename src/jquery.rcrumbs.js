@@ -7,25 +7,25 @@
  */
 
 (function ($, window, document, undefined) {
-  "use strict";
+  'use strict';
 
   var rcrumbs = 'rcrumbs',
-      defaults = {
-        version: '@@version',
-        callback: {
-          preCrumbsListDisplay: $.noop, //A function which is executed before the crumbs list is rendered
-          preCrumbDisplay: $.noop, //A function which is executed before each crumb is rendered
-          postCrumbsListDisplay: $.noop, //A function which is executed after the crumbs list is rendered
-          postCrumbDisplay: $.noop //A function which is executed after each crumb is rendered
-        },
-        ellipsis: true, // Display ellipsis when only the last crumb remains with not enough space to be fully displayed
-        windowResize: true, // To activate/deactivate the resizing of the crumbs on window resize event
-        nbUncollapsableCrumbs: 2, // Number of crumbs which can not be collapsed.
-        animation: {
-          activated: true, // Activate an animation when crumbs are displayed/hidden on a window resize
-          speed: 400 // Animation speed (activated option must be set to true)
-        }
-      };
+    defaults = {
+      version: '@@version',
+      callback: {
+        preCrumbsListDisplay: $.noop, //A function which is executed before the crumbs list is rendered
+        preCrumbDisplay: $.noop, //A function which is executed before each crumb is rendered
+        postCrumbsListDisplay: $.noop, //A function which is executed after the crumbs list is rendered
+        postCrumbDisplay: $.noop //A function which is executed after each crumb is rendered
+      },
+      ellipsis: true, // Display ellipsis when only the last crumb remains with not enough space to be fully displayed
+      windowResize: true, // To activate/deactivate the resizing of the crumbs on window resize event
+      nbUncollapsableCrumbs: 2, // Number of crumbs which can not be collapsed.
+      animation: {
+        activated: true, // Activate an animation when crumbs are displayed/hidden on a window resize
+        speed: 400 // Animation speed (activated option must be set to true)
+      }
+    };
 
   // Plugin constructor
   function Plugin(element, options) {
@@ -77,7 +77,7 @@
      */
     _getHiddenElWidth: function (element) {
       var result,
-          elementClone = $(element).clone(false);
+        elementClone = $(element).clone(false);
 
       elementClone.css({
         visibility: 'hidden',
@@ -135,7 +135,7 @@
       //It's important to loop through a reversed list in order to ensure we first try to display the last element
       $.each(this.reversedCrumbs, function (key, value) {
         var $crumb = $(this),
-            $nextCrumb = $(that.reversedCrumbs[key + 1]); //May return empty jQuery object
+          $nextCrumb = $(that.reversedCrumbs[key + 1]); //May return empty jQuery object
 
         that._showOrHideCrumb($crumb, $nextCrumb, key, disableAnimation);
       });
@@ -179,8 +179,7 @@
       function showCrumbWithOrWithoutAnimation() {
         $crumb.addClass('show');
 
-        if (that.lastNbCrumbDisplayed < (that.nbCrumbDisplayed + 1) && that.options.animation.activated &&
-            !disableAnimation) {
+        if (that.lastNbCrumbDisplayed < (that.nbCrumbDisplayed + 1) && that.options.animation.activated && !disableAnimation) {
           $crumb.width(0);
           $crumb.animate({width: $crumb.data('width')}, that.options.animation.speed, function () {
             that.options.callback.postCrumbDisplay($crumb);

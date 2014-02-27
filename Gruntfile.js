@@ -74,13 +74,7 @@ module.exports = function (grunt) {
     },
     jshint: {
       options: {
-        globals: {
-          jQuery: true,
-          console: true,
-          module: true,
-          document: true,
-          throws: false
-        }
+        jshintrc: true
       },
       gruntfile: {
         files: {
