@@ -146,7 +146,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-bumpx');
 
-  grunt.registerTask('default', ['connect', 'clean', 'jshint', 'less', 'qunit:last', 'concat', 'replace', 'uglify']);
+  grunt.registerTask('default', ['connect', 'clean', 'jshint', 'less', 'concat', 'replace', 'uglify', 'qunit:last']);
   grunt.registerTask('test', ['connect', 'jshint', 'qunit:last']);
   grunt.registerTask('test-all', ['connect', 'jshint', 'qunit:all']);
 
