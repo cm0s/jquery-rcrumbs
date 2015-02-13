@@ -11,6 +11,12 @@ A demonstration is available [here](http://cm0s.github.io/jquery-rcrumbs/demo/)
 The plugin's javascript and css files can be found in the dist/ folder.
 A development and a production version (minified) are available.
 
+### Bower
+To install the plugin with bower use the following command :
+```
+bower install jquery-rcrumbs
+```
+
 ## Usage
 1. Include the plugin css file:
 ```html
